@@ -22,9 +22,10 @@ export const initialInformation = {
 
 export const initialAcademy = {
   level: "Ingenieria",
+  profession: "Nombre de la carrera",
   academy: "Nombre de la institución",
   period: "2016 - 2020",
-  profession: "Nombre de la carrera",
+  certificate: "Certificado",
 };
 
 export const initialExperienceWork = {

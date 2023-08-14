@@ -3,13 +3,20 @@ import Input from "../../cv/Input";
 import { useState } from "react";
 import TemplateDetails from "./TemplateDetails";
 
-interface Props {
+interface FunctionSkills {
   getImage: (image: string) => void;
   getInfoCv: (e: FormEvents["change"]) => void;
 }
 
-const PersonalDetails = ({ getImage, getInfoCv }: Props) => {
+interface Props {
+  getFunctionSkills: FunctionSkills;
+}
+
+const PersonalDetails = ({ getFunctionSkills }: Props) => {
+  const { getImage, getInfoCv } = getFunctionSkills;
+
   const [errorImage, setErrorImage] = useState(false);
+
   const handleChangeInformation = (e: FormEvents["change"]): void => {
     getInfoCv(e);
   };
@@ -68,18 +75,19 @@ const PersonalDetails = ({ getImage, getInfoCv }: Props) => {
             title="Solo se permiten archivos JPG y PNG."
             id="photo"
             type="file"
-            className="block w-full py-3 text-sm text-slate-500 file:mr-1 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
-                file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+            accept="image/png, image/jpeg"
+            className="block w-[9.6rem] py-3 text-sm text-slate-500 file:mr-1 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold
+                file:bg-violet-200 file:text-violet-700 hover:file:bg-violet-100"
             onChange={handleImage}
           />
         </label>
-
         <button
           className="w-14 h-14 rounded-full bg-slate-300  hover:bg-gray-400 "
           title="Eliminar Foto"
           onClick={removeImage}>
           🗑️
         </button>
+
         {errorImage && (
           <div
             role="alert"
@@ -118,6 +126,12 @@ const PersonalDetails = ({ getImage, getInfoCv }: Props) => {
           type="text"
           inputName="web"
           placeholder="Sitio web"
+          onChange={handleChangeInformation}
+        />
+        <Input
+          type="text"
+          inputName="linkedin"
+          placeholder="Linkedin"
           onChange={handleChangeInformation}
         />
 

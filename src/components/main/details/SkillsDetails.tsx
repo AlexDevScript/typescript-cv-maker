@@ -3,23 +3,26 @@ import Input from "../../cv/Input";
 import InputList from "../../cv/InputList";
 import TemplateDetails from "./TemplateDetails";
 
-interface Props {
-  inputSoftSkill: string;
-  inputLanguage: string;
+interface FunctionSkills {
   getInfoCv: (e: FormEvents["change"]) => void;
   getSkill: (e: FormEvents["change"], setState: string) => void;
   addSkill: (setState: string) => void;
   removeSkill: (setState: string) => void;
 }
 
-const SkillsDetails: React.FC<Props> = ({
-  inputSoftSkill,
-  inputLanguage,
-  getInfoCv,
-  getSkill,
-  addSkill,
-  removeSkill,
-}) => {
+interface GetInputs {
+  inputSoftSkill: string;
+  inputLanguage: string;
+}
+
+interface Props {
+  getInputs: GetInputs;
+  getFunctionSkills: FunctionSkills;
+}
+
+const SkillsDetails = ({ getInputs, getFunctionSkills }: Props) => {
+  const { inputLanguage, inputSoftSkill } = getInputs;
+  const { getInfoCv, getSkill, addSkill, removeSkill } = getFunctionSkills;
   return (
     <TemplateDetails title="Habilidades Técnicas">
       <Input
@@ -49,18 +52,19 @@ const SkillsDetails: React.FC<Props> = ({
         input={inputSoftSkill}
         setState="soft"
         get={getSkill}
-        handleAdd={addSkill}
-        handleRemove={removeSkill}
+        onEventAdd={addSkill}
+        onEventRemove={removeSkill}
         type="text"
         inputName="softSkills"
         placeholder="Habilidades Blandas"
       />
+
       <InputList
         input={inputLanguage}
         setState="language"
         get={getSkill}
-        handleAdd={addSkill}
-        handleRemove={removeSkill}
+        onEventAdd={addSkill}
+        onEventRemove={removeSkill}
         type="text"
         inputName="foreignLanguages"
         placeholder="Idiomas"

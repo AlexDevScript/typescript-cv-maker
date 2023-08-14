@@ -5,8 +5,8 @@ interface Props {
   input: string;
   setState: string;
   get: (e: FormEvents["change"], setState: string) => void;
-  handleAdd: (setState: string) => void;
-  handleRemove: (setState: string) => void;
+  onEventAdd: (setState: string) => void;
+  onEventRemove: (setState: string) => void;
   type: string;
   inputName: string;
   placeholder: string;
@@ -16,8 +16,8 @@ const InputList = ({
   input,
   setState,
   get,
-  handleAdd,
-  handleRemove,
+  onEventAdd,
+  onEventRemove,
   type,
   inputName,
   placeholder,
@@ -28,7 +28,7 @@ const InputList = ({
   };
 
   const handleAddItem = () => {
-    handleAdd(setState);
+    onEventAdd(setState);
     inputRef.current?.focus();
   };
 
@@ -59,7 +59,7 @@ const InputList = ({
           Agregar
         </button>
         <button
-          onClick={() => handleRemove(setState)}
+          onClick={() => onEventRemove(setState)}
           className="w-24 h-11 rounded-md text-indigo-950  bg-indigo-200">
           Borrar
         </button>

@@ -7,6 +7,7 @@ export const initialInformation = {
     email: "micorreo@correo.com",
     web: "https://misitioweb.com",
     address: "Dirección actual de residencia",
+    linkedin: "https://www.linkedin.com/feed/",
   },
   skills: {
     languages: "html5, css3, javascript...",
@@ -23,7 +24,6 @@ export const initialAcademy = {
   level: "Ingenieria",
   academy: "Nombre de la institución",
   period: "2016 - 2020",
-  certificate: "Certificado",
   profession: "Nombre de la carrera",
 };
 

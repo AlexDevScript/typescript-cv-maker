@@ -3,27 +3,42 @@ import Input from "../../cv/Input";
 import InputList from "../../cv/InputList";
 import TemplateDetails from "./TemplateDetails";
 
-interface Props {
-  getResponsibility: (e: FormEvents["change"], setState: string) => void;
-  getExperience: (e: FormEvents["change"]) => void;
-  handleAddResponsability: (setState: string) => void;
-  handleRemoveResponsibility: (setState: string) => void;
+interface InputsWorkResponsabilty {
   inputResponsabilityWork: string;
   inputResponsabilityWork2: string;
+}
+
+interface GetFunctionWork {
+  addResponsability: (setState: string) => void;
+  removeResponsibility: (setState: string) => void;
+}
+
+interface GetInfo {
+  getResponsibility: (e: FormEvents["change"], setState: string) => void;
+  getExperience: (e: FormEvents["change"]) => void;
+}
+
+interface Props {
+  getFunctionWork: GetFunctionWork;
+  getInputsWorkResponsability: InputsWorkResponsabilty;
+  getInfo: GetInfo;
   handleToggle: () => void;
   isShowExperience: boolean;
 }
 
 const WorkExperienceDetails = ({
-  getResponsibility,
-  getExperience,
-  handleAddResponsability,
-  inputResponsabilityWork,
-  inputResponsabilityWork2,
-  handleRemoveResponsibility,
+  getInfo,
+  getFunctionWork,
+  getInputsWorkResponsability,
   handleToggle,
   isShowExperience,
 }: Props) => {
+  const { inputResponsabilityWork, inputResponsabilityWork2 } =
+    getInputsWorkResponsability;
+
+  const { addResponsability, removeResponsibility } = getFunctionWork;
+  const { getExperience, getResponsibility } = getInfo;
+
   const textButton = isShowExperience ? "Ocultar " : "Mostrar ";
   return (
     <TemplateDetails title="Experiencia Laboral">
@@ -52,8 +67,8 @@ const WorkExperienceDetails = ({
         input={inputResponsabilityWork}
         setState="work"
         get={getResponsibility}
-        handleAdd={handleAddResponsability}
-        handleRemove={handleRemoveResponsibility}
+        onEventAdd={addResponsability}
+        onEventRemove={removeResponsibility}
         type="text"
         inputName="foreignLanguages"
         placeholder="Responsabilidades"
@@ -93,8 +108,8 @@ const WorkExperienceDetails = ({
           input={inputResponsabilityWork2}
           setState="work2"
           get={getResponsibility}
-          handleAdd={handleAddResponsability}
-          handleRemove={handleRemoveResponsibility}
+          onEventAdd={addResponsability}
+          onEventRemove={removeResponsibility}
           type="text"
           inputName="foreignLanguages"
           placeholder="Responsabilidades"

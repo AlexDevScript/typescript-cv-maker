@@ -4,14 +4,15 @@ import { FormEvents, ExperienceWork, NewList } from "../types";
 import { useState } from "react";
 
 const useWorkExperience = () => {
-  const [inputExperienceWork, setInputExperienceWork] =
-    useState<ExperienceWork>(initialExperienceWork);
+  const [listExperienceWork, setListExperienceWork] = useState<ExperienceWork>(
+    initialExperienceWork
+  );
 
   const getExperience = (e: FormEvents["change"]) => {
     const { name, value } = e.target;
 
-    setInputExperienceWork({
-      ...inputExperienceWork,
+    setListExperienceWork({
+      ...listExperienceWork,
       [name]: value,
     });
   };
@@ -38,7 +39,7 @@ const useWorkExperience = () => {
     }
   };
 
-  const handleAddResponsability = (setState: string) => {
+  const addResponsability = (setState: string) => {
     if (setState === "work") {
       const newResponsability = createNewList(inputResponsabilityWork);
 
@@ -63,7 +64,7 @@ const useWorkExperience = () => {
     }
   };
 
-  const handleRemoveResponsibility = (setState: string) => {
+  const removeResponsibility = (setState: string) => {
     if (setState === "work") {
       setListResponsabilitysWork((prevItems) => prevItems.slice(0, -1));
     }
@@ -73,16 +74,32 @@ const useWorkExperience = () => {
     }
   };
 
-  return {
-    inputExperienceWork,
-    listResponsabilitysWork,
-    listResponsabilitysWork2,
+  const getInputsWorkResponsability = {
     inputResponsabilityWork,
     inputResponsabilityWork2,
-    handleAddResponsability,
-    handleRemoveResponsibility,
-    getResponsibility,
+  };
+
+  const listsWork = {
+    listExperienceWork,
+    listResponsabilitysWork,
+    listResponsabilitysWork2,
+  };
+
+  const getFunctionWork = {
+    addResponsability,
+    removeResponsibility,
+  };
+
+  const getInfo = {
     getExperience,
+    getResponsibility,
+  };
+
+  return {
+    getFunctionWork,
+    getInputsWorkResponsability,
+    getInfo,
+    listsWork,
   };
 };
 

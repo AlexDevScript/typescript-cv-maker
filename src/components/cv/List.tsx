@@ -8,13 +8,15 @@ interface Props {
 
 const List = ({ color, nameList, lists }: Props) => {
   return (
-    <div className="w-full mb-1">
+    <div className="mb-1">
       {nameList && (
-        <h3 style={{ backgroundColor: color }} className="w-full font-semibold">
+        <h3
+          className="w-full font-semibold pl-2"
+          style={{ backgroundColor: color }}>
           {nameList}
         </h3>
       )}
-      <ul className="w-full pl-5  m-auto marker:text-black list-disc text-sm font-semibold  text-black">
+      <ul className="w-full pl-4  marker:text-black list-disc text-sm font-semibold text-black">
         {lists?.map((item) => (
           <li key={item.id}>{item.date}</li>
         ))}

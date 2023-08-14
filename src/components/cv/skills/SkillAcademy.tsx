@@ -2,18 +2,20 @@ interface Props {
   title: string;
   info: string;
   rgbaColor: string;
+  initialColorRgba: string;
 }
 
-const SkillAcademy = ({ title, info, rgbaColor }: Props) => {
+const SkillAcademy = ({ title, info, rgbaColor, initialColorRgba }: Props) => {
   return (
-    <div className="text-center text-black">
-      <p className="font-bold">{title}</p>
+    <div className="text-black">
       <p
+        className="w-full text-center font-bold"
         style={{
-          backgroundColor: rgbaColor ? rgbaColor : "rgba(66, 94, 133, 0.4)",
+          background: rgbaColor ? rgbaColor : initialColorRgba,
         }}>
-        {info}
+        {title}
       </p>
+      <p className="text-center">{info}</p>
     </div>
   );
 };

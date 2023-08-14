@@ -6,6 +6,7 @@ export interface PersonalInfo {
   email: string;
   address: string;
   web: string;
+  linkedin: string;
 }
 
 export interface NewList {
@@ -46,7 +47,27 @@ export interface Academy {
   profession: string;
 }
 
+export interface ListsInfo {
+  listSkill: NewList[];
+  listLanguages: NewList[];
+  informationCv: InitialCv;
+  selectedImage: string | null;
+}
+
+export interface ListsWork {
+  listExperienceWork: ExperienceWork;
+  listResponsabilitysWork: NewList[];
+  listResponsabilitysWork2: NewList[];
+}
+
+export interface Color {
+  color: string;
+  handleChangeColor: (e: FormEvents["change"]) => void;
+  handleResetColor: () => void;
+  rgbaColor: string;
+  initialColorRgba: string;
+}
+
 export type FormEvents = {
-  change: React.ChangeEvent<HTMLInputElement> &
-    React.ChangeEvent<HTMLTextAreaElement>;
+  change: React.ChangeEvent<HTMLInputElement | HTMLTextArea>;
 };

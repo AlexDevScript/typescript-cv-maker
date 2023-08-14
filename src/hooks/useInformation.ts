@@ -71,18 +71,31 @@ const useInformation = () => {
       setListLanguages((prevItems) => prevItems.slice(0, -1));
   };
 
-  return {
-    selectedImage,
-    getImage,
+  const getFunctionSkills = {
     getInfoCv,
-    informationCv,
-    inputSoftSkill,
-    inputLanguage,
+    getImage,
     getSkill,
     addSkill,
     removeSkill,
+  };
+
+  const getInputs = {
+    inputSoftSkill,
+    inputLanguage,
+  };
+
+  const listsInfo = {
     listSkill,
     listLanguages,
+    informationCv,
+    selectedImage,
+  };
+
+  return {
+    getInfoCv,
+    getInputs,
+    getFunctionSkills,
+    listsInfo,
   };
 };
 

@@ -13,8 +13,8 @@ const TechnicalSkills = ({ color, informationCv }: Props) => {
     <>
       <h3
         style={{ backgroundColor: color }}
-        className="w-full text-center py-1 mb-1 text-xl font-bold tracking-wider">
-        HABILIDADES TÉCNICAS
+        className="w-full uppercase py-1 mb-1 text-center text-xl font-bold tracking-wider">
+        Habilidades Técnicas
       </h3>
       <Skill
         color={color}
@@ -24,7 +24,7 @@ const TechnicalSkills = ({ color, informationCv }: Props) => {
       />
       <Skill
         color={color}
-        nameSkill="Frameworks - Librerias"
+        nameSkill="Librerias"
         skill={librarys}
         capitalize={true}
       />

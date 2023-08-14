@@ -1,65 +1,53 @@
 import SectionInformation from "./information-personal/SectionInformation";
 import SectionSkills from "./skills/SectionSkills";
-import { Academy, InitialCv, ExperienceWork, NewList } from "../../types";
+import { Academy, Color, ListsInfo, ListsWork } from "../../types";
 
 interface Props {
-  color: string;
-  rgbaColor: string;
+  changeColor: Color;
   componentPDF: React.LegacyRef<HTMLElement> | null;
-  selectedImage: string | null;
-  inputExperienceWork: ExperienceWork;
-  listResponsabilitysWork: NewList[];
-  listResponsabilitysWork2: NewList[];
-  informationCv: InitialCv;
-  listSkill: NewList[];
-  listLanguages: NewList[];
+  listsInfo: ListsInfo;
+  listsWork: ListsWork;
   infoAcademy: Academy;
   isShowExperience: boolean;
 }
 
 const Cv = ({
-  color,
-  rgbaColor,
+  changeColor,
   componentPDF,
-  selectedImage,
-  inputExperienceWork,
-  listResponsabilitysWork,
-  listResponsabilitysWork2,
-  informationCv,
-  listSkill,
-  listLanguages,
+  listsWork,
+  listsInfo,
   infoAcademy,
   isShowExperience,
 }: Props) => {
+  const { selectedImage, informationCv } = listsInfo;
+  const { color, rgbaColor, initialColorRgba } = changeColor;
+
   return (
-    <section ref={componentPDF} className="w-[98%] mx-auto mt-5 font-body">
+    <section
+      ref={componentPDF}
+      className="w-[98%] h-full m-auto mt-4 font-body bg-hero bg-cover">
       <div
         style={{ backgroundColor: color }}
-        className="w-11/12 h-8  flex justify-center items-center mb-5 mx-auto">
+        className="w-3/4 h-8 mx-auto mb-5 flex justify-center items-center">
         <h1
-          className="w-3/4 text-3xl text-center font-bold py-2 px-5 tracking-widest text-white"
+          className="w-full text-3xl text-center font-bold py-2 px-5 text-white tracking-widest"
           style={{
-            backgroundColor: rgbaColor ? rgbaColor : "rgba(66, 94, 133, 0.4)",
+            background: rgbaColor ? rgbaColor : initialColorRgba,
           }}>
           CURRICULUM VITAE
         </h1>
       </div>
 
-      <div className="flex gap-2 ">
+      <div className="flex gap-2">
         <SectionSkills
-          color={color}
-          rgbaColor={rgbaColor}
-          informationCv={informationCv}
-          listSkill={listSkill}
-          listLanguages={listLanguages}
+          changeColor={changeColor}
           infoAcademy={infoAcademy}
+          listsInfo={listsInfo}
         />
         <SectionInformation
-          color={color}
+          changeColor={changeColor}
           selectedImage={selectedImage}
-          inputExperienceWork={inputExperienceWork}
-          listResponsabilitysWork={listResponsabilitysWork}
-          listResponsabilitysWork2={listResponsabilitysWork2}
+          listsWork={listsWork}
           informationCv={informationCv}
           isShowExperience={isShowExperience}
         />

@@ -1,11 +1,16 @@
 import { FormEvents } from "../../../types";
 import TemplateDetails from "./TemplateDetails";
 
-interface Props {
+interface FunctionSkills {
   getInfoCv: (e: FormEvents["change"]) => void;
 }
 
-const AboutMeDetails = ({ getInfoCv }: Props) => {
+interface Props {
+  getFunctionSkills: FunctionSkills;
+}
+
+const AboutMeDetails = ({ getFunctionSkills }: Props) => {
+  const { getInfoCv } = getFunctionSkills;
   return (
     <TemplateDetails title="Sobre mí">
       <textarea

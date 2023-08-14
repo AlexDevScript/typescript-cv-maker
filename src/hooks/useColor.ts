@@ -3,6 +3,7 @@ import { FormEvents } from "../types";
 
 const useColor = () => {
   const initialColor = "#425e85";
+  const initialColorRgba = "rgba(66, 94, 133, 0.4)";
 
   const [color, setColor] = useState<string>(initialColor);
   const [rgbaColor, setRgbaColor] = useState<string>("");
@@ -41,7 +42,19 @@ const useColor = () => {
     }
   };
 
-  return { handleChangeColor, handleResetColor, color, rgbaColor };
+  const changeColor = {
+    handleChangeColor,
+    handleResetColor,
+    color,
+    rgbaColor,
+    initialColorRgba,
+  };
+
+  return {
+    changeColor,
+    rgbaColor,
+    initialColorRgba,
+  };
 };
 
 export default useColor;

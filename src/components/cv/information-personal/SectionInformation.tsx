@@ -1,22 +1,18 @@
-import { InitialCv, ExperienceWork, NewList } from "../../../types";
+import { Color, InitialCv, ListsWork } from "../../../types";
 import List from "../List";
 
 interface Props {
-  color: string;
+  changeColor: Color;
   selectedImage: string | null;
-  inputExperienceWork: ExperienceWork;
-  listResponsabilitysWork: NewList[];
-  listResponsabilitysWork2: NewList[];
+  listsWork: ListsWork;
   informationCv: InitialCv;
   isShowExperience: boolean;
 }
 
 const SectionInformation = ({
-  color,
+  changeColor,
   selectedImage,
-  inputExperienceWork,
-  listResponsabilitysWork,
-  listResponsabilitysWork2,
+  listsWork,
   informationCv,
   isShowExperience,
 }: Props) => {
@@ -27,70 +23,93 @@ const SectionInformation = ({
     email,
     address,
     web,
+    linkedin,
   } = informationCv.information;
   const { aboutMe } = informationCv.aboutMe;
 
-  const { company, period, job, company2, period2, job2 } = inputExperienceWork;
+  const {
+    listExperienceWork,
+    listResponsabilitysWork,
+    listResponsabilitysWork2,
+  } = listsWork;
+
+  const { company, period, job, company2, period2, job2 } = listExperienceWork;
+
+  const { color } = changeColor;
 
   return (
-    <article className="w-9/12  relative text-white bg-white">
+    <article className="w-[90%] relative text-white bg-white">
       <h3
-        className="w-full mb-2 text-center text-xl font-bold tracking-wider"
+        className="w-full uppercase mb-1 text-center text-xl font-bold tracking-wider"
         style={{ backgroundColor: color }}>
-        INFORMACIÓN PERSONAL
+        Información Personal
       </h3>
 
-      <div className="text-base flex flex-col mb-3 shadow-2xl text-black">
-        <p className="capitalize text-center font-semibold text-lg">{name}</p>
-        <p className="capitalize text-center border-b-2">{profession}</p>
-        <div className="flex justify-evenly items-center">
-          <div className="w-1/2 h-20 flex flex-col justify-evenly items-center border-b-2">
-            <p className="font-semibold text-black ">Contacto</p>
-            <p className="text-black">{telephone}</p>
-            <p className="text-black">{email}</p>
+      <div className="text-base flex flex-col mb-2 shadow-2xl text-black">
+        <p className="capitalize text-center text-lg  font-semibold">{name}</p>
+        <p className="capitalize text-center font-semibold border-b-2 mb-3">
+          {profession}
+        </p>
+        <div className="flex items-center">
+          <div className="w-1/2 h-28 flex flex-col justify-evenly items-center">
+            <p className="font-semibold text-black">Contacto</p>
+            <p className="text-black">📞{telephone}</p>
+            <p className="text-black">📧{email}</p>
           </div>
 
           {selectedImage && (
-            <div className="w-2/5 h-32 flex justify-center  ">
+            <div className="w-44 h-34 flex justify-center [clip-path:polygon(50%_0%,90%_20%,100%_60%,75%_100%,25%_100%,0%_60%,10%_20%)] -mt-2">
               <img
-                className="object-cover w-32 h-32  rounded-full"
+                className="w-full object-cover"
                 src={selectedImage}
                 alt="fotografia"
               />
             </div>
           )}
 
-          <div className="w-1/2 h-20 flex flex-col justify-evenly items-center border-b-2">
-            <p className="font-semibold text-black">Dirección</p>
-            <p className=" text-center text-black p-2">{address}</p>
+          <div className="w-1/2 h-20 flex flex-col justify-evenly items-center">
+            <p className="font-semibold text-black">🏠Dirección</p>
+            <p className=" text-center text-black">{address}</p>
           </div>
         </div>
 
-        <div className="w-full flex flex-col justify-evenly items-center my-1">
-          <p className="font-semibold text-black">Sitio Web - Portafolio</p>
-          <a href={web} target="_blank">
-            {web}
-          </a>
+        <div className="w-full h-16 flex flex-col justify-evenly">
+          <div className="w-full flex justify-center ">
+            <p className="w-32 text-center font-semibold text-black">
+              Linkedin
+            </p>
+            <a href={linkedin} target="_blank">
+              {linkedin}
+            </a>
+          </div>
+          <div className="w-full flex justify-center">
+            <p className="w-56 text-center font-semibold text-black">
+              Sitio Web - Portafolio
+            </p>
+            <a href={web} target="_blank">
+              {web}
+            </a>
+          </div>
         </div>
       </div>
 
       <div className=" mb-2 shadow-2xl">
         <h3
-          className="w-full mb-2 text-center text-xl font-bold tracking-wider"
+          className="w-full uppercase mb-2 text-center text-xl font-bold tracking-wider"
           style={{ backgroundColor: color }}>
-          SOBRE MÍ
+          Sobre Mí
         </h3>
         <p className="py-1 px-5 text-base  text-black">{aboutMe}</p>
       </div>
 
-      <div className="shadow-2xl">
+      <div className="mb-2 shadow-2xl">
         <h3
-          className="w-full mb-2 text-center text-xl font-bold tracking-wider"
+          className="w-full mb-2 uppercase text-center text-xl font-bold tracking-wider"
           style={{ backgroundColor: color }}>
-          EXPERIENCIA LABORAL
+          Experiencia Laboral
         </h3>
 
-        <div className="w-full flex flex-wrap justify-around gap-2 px-2 text-black">
+        <div className="w-full flex flex-wrap justify-around gap-1 pl-2 text-black">
           <p>
             <span className="font-bold">Empresa </span>
             {company}
@@ -101,20 +120,19 @@ const SectionInformation = ({
           <p>
             <span className="font-bold">Puesto </span> {job}
           </p>
-
-          <List lists={listResponsabilitysWork} nameList="Responsabilidades" />
+          <List lists={listResponsabilitysWork} />
         </div>
       </div>
 
       {isShowExperience && (
         <div className="shadow-2xl">
           <h3
-            className="w-full mb-2 text-center text-xl font-bold tracking-wider"
+            className="w-full uppercase mb-2 text-center text-xl font-bold tracking-wider"
             style={{ backgroundColor: color }}>
-            EXPERIENCIA LABORAL
+            Experiencia Laboral
           </h3>
 
-          <div className="w-full flex flex-wrap justify-around gap-2 px-2 text-black">
+          <div className="w-full flex flex-wrap justify-around gap-1 pl-2 text-black">
             <p>
               <span className="font-bold">Empresa </span>
               {company2}
@@ -126,10 +144,8 @@ const SectionInformation = ({
               <span className="font-bold">Puesto </span>
               {job2}
             </p>
-            <List
-              lists={listResponsabilitysWork2}
-              nameList="Responsabilidades"
-            />
+
+            <List lists={listResponsabilitysWork2} />
           </div>
         </div>
       )}

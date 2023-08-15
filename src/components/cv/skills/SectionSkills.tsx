@@ -14,7 +14,7 @@ const SectionSkills = ({ changeColor, infoAcademy, listsInfo }: Props) => {
   const { color, rgbaColor, initialColorRgba } = changeColor;
 
   return (
-    <article className="w-52 text-white shadow-xl bg-white">
+    <article className="w-52  text-white shadow-xl bg-white">
       <TechnicalSkills color={color} informationCv={informationCv} />
 
       <PersonalSkills

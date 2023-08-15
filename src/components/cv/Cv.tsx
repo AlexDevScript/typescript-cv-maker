@@ -25,7 +25,7 @@ const Cv = ({
   return (
     <section
       ref={componentPDF}
-      className="w-[98%] h-full m-auto mt-4 font-body bg-hero bg-cover">
+      className="w-[98%] m-auto mt-5 font-body bg-hero bg-cover">
       <div
         style={{ backgroundColor: color }}
         className="w-3/4 h-8 mx-auto mb-5 flex justify-center items-center">

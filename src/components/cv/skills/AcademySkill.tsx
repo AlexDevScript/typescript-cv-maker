@@ -26,6 +26,7 @@ const AcademySkill = ({
       <SkillAcademy
         title="Nivel Académico"
         info={level}
+        color={color}
         rgbaColor={rgbaColor}
         initialColorRgba={initialColorRgba}
       />
@@ -33,6 +34,7 @@ const AcademySkill = ({
       <SkillAcademy
         title="Carrera - Profesión"
         info={profession}
+        color={color}
         rgbaColor={rgbaColor}
         initialColorRgba={initialColorRgba}
       />
@@ -40,6 +42,7 @@ const AcademySkill = ({
       <SkillAcademy
         title="Institución"
         info={academy}
+        color={color}
         rgbaColor={rgbaColor}
         initialColorRgba={initialColorRgba}
       />
@@ -47,6 +50,7 @@ const AcademySkill = ({
       <SkillAcademy
         title="Periodo"
         info={period}
+        color={color}
         rgbaColor={rgbaColor}
         initialColorRgba={initialColorRgba}
       />
@@ -54,6 +58,7 @@ const AcademySkill = ({
       <SkillAcademy
         title="Documento Recibido"
         info={certificate}
+        color={color}
         rgbaColor={rgbaColor}
         initialColorRgba={initialColorRgba}
       />

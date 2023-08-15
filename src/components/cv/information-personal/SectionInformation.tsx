@@ -38,7 +38,7 @@ const SectionInformation = ({
   const { color } = changeColor;
 
   return (
-    <article className="w-[90%] relative text-white bg-white">
+    <article className="w-[90%] mb-2 relative text-white bg-white">
       <h3
         className="w-full uppercase mb-1 text-center text-xl font-bold tracking-wider"
         style={{ backgroundColor: color }}>
@@ -46,8 +46,8 @@ const SectionInformation = ({
       </h3>
 
       <div className="text-base flex flex-col mb-2 shadow-2xl text-black">
-        <p className="capitalize text-center text-lg  font-semibold">{name}</p>
-        <p className="capitalize text-center font-semibold border-b-2 mb-3">
+        <p className="capitalize text-center text-xl font-semibold">{name}</p>
+        <p className="capitalize text-center text-sm font-semibold border-b-2 mb-3">
           {profession}
         </p>
         <div className="flex items-center">
@@ -125,7 +125,7 @@ const SectionInformation = ({
       </div>
 
       {isShowExperience && (
-        <div className="shadow-2xl">
+        <div className="">
           <h3
             className="w-full uppercase mb-2 text-center text-xl font-bold tracking-wider"
             style={{ backgroundColor: color }}>

@@ -26,7 +26,7 @@ const Main = () => {
 
   const { getInfoAcademy, infoAcademy } = useAcademy();
 
-  const { changeColor, rgbaColor, initialColorRgba } = useColor();
+  const { changeColor } = useColor();
 
   const componentPDF = useRef<HTMLDivElement>(null);
 
@@ -35,13 +35,15 @@ const Main = () => {
   });
 
   return (
-    <main className="w-11/12 m-auto flex gap-x-3 bg-hero bg-contain">
+    <main className="w-11/12 min-h-screen m-auto flex gap-x-3 bg-hero bg-contain">
       <section
         style={{
-          background: rgbaColor ? rgbaColor : initialColorRgba,
+          background: changeColor.rgbaColor
+            ? changeColor.rgbaColor
+            : changeColor.initialColorRgba,
         }}
         className="w-1/3 h-[46rem] m-auto py-5 overflow-hidden overflow-y-visible scrollbar">
-        <h2 className="text-xl font-bold font-body p-2 text-center tracking-wider text-sky-950 ">
+        <h2 className="text-xl font-bold font-body p-2 text-center tracking-wider text-black">
           Bienvenido llena los campos y crea tu CV.
         </h2>
         <PersonalDetails getFunctionSkills={getFunctionSkills} />
@@ -69,7 +71,6 @@ const Main = () => {
           🖨️ Imprimir
         </Button>
       </section>
-
       <Cv
         changeColor={changeColor}
         componentPDF={componentPDF}

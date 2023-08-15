@@ -9,16 +9,26 @@ interface Props {
 
 const PersonalSkills = ({ color, listSkill, listLanguages }: Props) => {
   return (
-    <div className="mb-2">
+    <>
       <h3
         style={{ backgroundColor: color }}
         className="w-full uppercase text-center py-1 mb-1 text-xl font-bold tracking-wider">
         Habilidades Personales
       </h3>
 
-      <List color={color} nameList="Habilidades blandas" lists={listSkill} />
-      <List color={color} nameList="Idiomas" lists={listLanguages} />
-    </div>
+      <List
+        color={color}
+        nameList="Habilidades blandas"
+        capitalize={true}
+        lists={listSkill}
+      />
+      <List
+        color={color}
+        nameList="Idiomas"
+        capitalize={true}
+        lists={listLanguages}
+      />
+    </>
   );
 };
 
